@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginScreen: View {
     @State var username: String
-    var function: (_ username: String) -> Void
+    var loginFunction: (_ username: String) -> Void
     var body: some View {
         VStack (alignment: .center) {
             Spacer()
@@ -29,7 +29,7 @@ struct LoginScreen: View {
             .border(.secondary).padding([.vertical])
             Button("Log in",
                    action: {
-                self.function(username)
+                self.loginFunction(username)
             })
             .padding()
             .frame(maxWidth: .infinity)
@@ -43,5 +43,5 @@ struct LoginScreen: View {
 }
 
 #Preview {
-    LoginScreen(username: "Darryn 1", function: {username in })
+    LoginScreen(username: "Darryn 1", loginFunction: {username in })
 }

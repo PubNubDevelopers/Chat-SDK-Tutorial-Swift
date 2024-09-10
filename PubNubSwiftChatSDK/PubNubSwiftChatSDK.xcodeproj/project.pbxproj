@@ -14,6 +14,17 @@
 		2A7F2AF82C87B6C400783524 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F2AF72C87B6C400783524 /* Avatar.swift */; };
 		2A7F2AFA2C87BF0800783524 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F2AF92C87BF0800783524 /* LoginScreen.swift */; };
 		2A96540B2C891269001E6EA7 /* MessageReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96540A2C891269001E6EA7 /* MessageReaction.swift */; };
+		2AA6797B2C8E358D00D589E3 /* ChatMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA6797A2C8E358D00D589E3 /* ChatMenuItem.swift */; };
+		2AA6797D2C8E391600D589E3 /* ChatMenuGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA6797C2C8E391600D589E3 /* ChatMenuGroup.swift */; };
+		2AA6797F2C8E3DEC00D589E3 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA6797E2C8E3DEC00D589E3 /* ChatScreen.swift */; };
+		2AA679812C8E3F7800D589E3 /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA679802C8E3F7800D589E3 /* MessageInput.swift */; };
+		2AA679832C8E43A700D589E3 /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA679822C8E43A700D589E3 /* TypingIndicator.swift */; };
+		2AA679852C8E492A00D589E3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA679842C8E492A00D589E3 /* Message.swift */; };
+		2AA679872C8E5EF000D589E3 /* MessageReadReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA679862C8E5EF000D589E3 /* MessageReadReceipt.swift */; };
+		2AA988992C8A5E950018D859 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA988982C8A5E950018D859 /* Header.swift */; };
+		2AA9889B2C8A66F10018D859 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9889A2C8A66F10018D859 /* HomeScreen.swift */; };
+		2AA9889D2C8A686E0018D859 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9889C2C8A686E0018D859 /* NavBar.swift */; };
+		2AA9889F2C8A6A5D0018D859 /* NavIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9889E2C8A6A5D0018D859 /* NavIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +36,17 @@
 		2A7F2AF72C87B6C400783524 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		2A7F2AF92C87BF0800783524 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		2A96540A2C891269001E6EA7 /* MessageReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReaction.swift; sourceTree = "<group>"; };
+		2AA6797A2C8E358D00D589E3 /* ChatMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMenuItem.swift; sourceTree = "<group>"; };
+		2AA6797C2C8E391600D589E3 /* ChatMenuGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMenuGroup.swift; sourceTree = "<group>"; };
+		2AA6797E2C8E3DEC00D589E3 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
+		2AA679802C8E3F7800D589E3 /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
+		2AA679822C8E43A700D589E3 /* TypingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
+		2AA679842C8E492A00D589E3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2AA679862C8E5EF000D589E3 /* MessageReadReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReadReceipt.swift; sourceTree = "<group>"; };
+		2AA988982C8A5E950018D859 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		2AA9889A2C8A66F10018D859 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		2AA9889C2C8A686E0018D859 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		2AA9889E2C8A6A5D0018D859 /* NavIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +83,17 @@
 				2A7F2AEB2C87B5F100783524 /* ContentView.swift */,
 				2A7F2AF92C87BF0800783524 /* LoginScreen.swift */,
 				2A7F2AF72C87B6C400783524 /* Avatar.swift */,
+				2AA9889A2C8A66F10018D859 /* HomeScreen.swift */,
+				2AA6797E2C8E3DEC00D589E3 /* ChatScreen.swift */,
+				2AA679842C8E492A00D589E3 /* Message.swift */,
+				2AA679862C8E5EF000D589E3 /* MessageReadReceipt.swift */,
+				2AA679802C8E3F7800D589E3 /* MessageInput.swift */,
+				2AA679822C8E43A700D589E3 /* TypingIndicator.swift */,
+				2AA6797A2C8E358D00D589E3 /* ChatMenuItem.swift */,
+				2AA6797C2C8E391600D589E3 /* ChatMenuGroup.swift */,
+				2AA988982C8A5E950018D859 /* Header.swift */,
+				2AA9889C2C8A686E0018D859 /* NavBar.swift */,
+				2AA9889E2C8A6A5D0018D859 /* NavIcon.swift */,
 				2A96540A2C891269001E6EA7 /* MessageReaction.swift */,
 				2A7F2AED2C87B5F200783524 /* Assets.xcassets */,
 				2A7F2AEF2C87B5F200783524 /* Preview Content */,
@@ -146,11 +179,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AA679872C8E5EF000D589E3 /* MessageReadReceipt.swift in Sources */,
+				2AA679812C8E3F7800D589E3 /* MessageInput.swift in Sources */,
 				2A7F2AF82C87B6C400783524 /* Avatar.swift in Sources */,
+				2AA6797D2C8E391600D589E3 /* ChatMenuGroup.swift in Sources */,
+				2AA9889D2C8A686E0018D859 /* NavBar.swift in Sources */,
 				2A7F2AFA2C87BF0800783524 /* LoginScreen.swift in Sources */,
+				2AA9889B2C8A66F10018D859 /* HomeScreen.swift in Sources */,
 				2A7F2AEC2C87B5F100783524 /* ContentView.swift in Sources */,
 				2A96540B2C891269001E6EA7 /* MessageReaction.swift in Sources */,
+				2AA6797F2C8E3DEC00D589E3 /* ChatScreen.swift in Sources */,
+				2AA988992C8A5E950018D859 /* Header.swift in Sources */,
+				2AA679832C8E43A700D589E3 /* TypingIndicator.swift in Sources */,
 				2A7F2AEA2C87B5F100783524 /* PubNubSwiftChatSDKApp.swift in Sources */,
+				2AA679852C8E492A00D589E3 /* Message.swift in Sources */,
+				2AA9889F2C8A6A5D0018D859 /* NavIcon.swift in Sources */,
+				2AA6797B2C8E358D00D589E3 /* ChatMenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

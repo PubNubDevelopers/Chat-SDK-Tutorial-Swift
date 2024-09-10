@@ -21,7 +21,7 @@ struct MessageReaction : View {
             else {
                 Text(" ").font(.body)
             }
-        }.padding(5).border(Neutral200, width: 1).background(Neutral50).cornerRadius(10)
+        }.padding(4).background(Neutral50).cornerRadius(10).padding(1).background(Neutral200).cornerRadius(10)
     }
 }
 
@@ -31,6 +31,7 @@ struct MessageReaction : View {
         MessageReaction(emoji: "🫠", count: 1)
         MessageReaction(emoji: "😀", count: 0)
         MessageReaction(emoji: "🥶", count: 10)
+        MessageReaction(emoji: "🥶", count: 5)
 
     }
 }

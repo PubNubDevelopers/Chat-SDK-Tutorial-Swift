@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AvatarView : View {
     let url: URL
-    let presenceColor: Color
+    var presenceShown: Bool = true
+    var presenceColor: Color = Color.black
     let size: CGFloat
     var body: some View {
         ZStack (alignment: .bottomTrailing) {
@@ -24,15 +25,18 @@ struct AvatarView : View {
             .cornerRadius(size / 2)
             .overlay(
                 Circle()
-                    .stroke(Color.white, lineWidth: 4)
+                    .stroke(Color.white, lineWidth: 0)
                     .frame(width: size, height: size)
             )
-            Circle()
-                .strokeBorder(Color.white,lineWidth: 1)
-                .background(Circle().foregroundColor(presenceColor))
-                .frame(width: size/4, height: size/4)
-                .offset(x: -size/10, y: -size/10)
-            //.shadow(radius: 10)
+            if (presenceShown)
+            {
+                Circle()
+                    .strokeBorder(Color.white,lineWidth: 1)
+                    .background(Circle().foregroundColor(presenceColor))
+                    .frame(width: size/4, height: size/4)
+                    .offset(x: -size/10, y: -size/10)
+                //.shadow(radius: 10)
+            }
         }
     }
 }
@@ -40,12 +44,14 @@ struct AvatarView : View {
 
 #Preview {
     VStack {
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Color.green, size: 100)
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceShown: false, size: 100)
 
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Color.green, size: 50)
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: StatusIndicatorSuccess, size: 100)
+
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: StatusIndicatorSuccess, size: 50)
         
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Color.gray, size: 100)
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 100)
 
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Color.gray, size: 50)
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 50)
     }
 }
