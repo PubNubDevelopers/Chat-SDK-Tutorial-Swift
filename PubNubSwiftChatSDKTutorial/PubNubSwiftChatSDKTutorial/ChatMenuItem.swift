@@ -6,20 +6,28 @@
 //
 
 import SwiftUI
+import PubNubSDK
+import PubNubSwiftChatSDK
 
 struct ChatMenuItem: View {
     var avatarUrl: URL
     var chatTitle: String
-    var userSelected: () -> Void = {}
-    var channelSelected: () -> Void = {}
+    var userSelected: (UserImpl) -> Void = {_ in}
+    var channelSelected: (ChannelImpl) -> Void = { _ in}
+    var stateChannel: ChannelImpl?
+    var stateUser: UserImpl?
     var body: some View {
         HStack (){
             AvatarView(url: avatarUrl, presenceShown: false, size: 40).padding(.leading, 15).padding(.trailing, 8).padding(.vertical, 4)
             Text(chatTitle).font(.body)
         }.frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
             .onTapGesture {
-                userSelected()
-                channelSelected()
+                if (stateUser != nil) {
+                    userSelected(stateUser!)
+                }
+                if (stateChannel != nil) {
+                    channelSelected(stateChannel!)
+                }
             }
     }
 }
