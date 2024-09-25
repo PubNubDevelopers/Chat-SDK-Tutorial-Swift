@@ -1,8 +1,8 @@
 //
-//  PubNubSwiftChatSDKApp.swift
-//  PubNubSwiftChatSDK
+//  PubNubSwiftChatSDKTutorialApp.swift
+//  PubNubSwiftChatSDKTutorial
 //
-//  Created by Darryn Campbell on 03/09/2024.
+//  Created by Darryn Campbell on 25/09/2024.
 //
 
 import SwiftUI
@@ -21,7 +21,7 @@ let StatusIndicatorSuccess = Color(red: 0.133, green: 0.773, blue: 0.3686)
 let Teal100 = Color(red: 0.8196, green: 0.8941, blue: 0.898)
 
 @main
-struct PubNubSwiftChatSDKApp: App {
+struct PubNubSwiftChatSDKTutorialApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

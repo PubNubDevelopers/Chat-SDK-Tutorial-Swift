@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct TypingIndicator: View {
+struct TypingIndicatorView: View {
     var body: some View {
         Text("Typing: User1, User2").font(.callout).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
     }
 }
 
 #Preview {
-    TypingIndicator()
+    TypingIndicatorView()
 }
 

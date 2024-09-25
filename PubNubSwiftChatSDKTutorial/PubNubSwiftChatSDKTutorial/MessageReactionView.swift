@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MessageReaction : View {
+struct MessageReactionView : View {
     let emoji: String
     let count: Int
     @State var countText: String = ""
@@ -28,10 +28,10 @@ struct MessageReaction : View {
 
 #Preview {
     HStack (spacing:5) {
-        MessageReaction(emoji: "🫠", count: 1)
-        MessageReaction(emoji: "😀", count: 0)
-        MessageReaction(emoji: "🥶", count: 10)
-        MessageReaction(emoji: "🥶", count: 5)
+        MessageReactionView(emoji: "🫠", count: 1)
+        MessageReactionView(emoji: "😀", count: 0)
+        MessageReactionView(emoji: "🥶", count: 10)
+        MessageReactionView(emoji: "🥶", count: 5)
 
     }
 }

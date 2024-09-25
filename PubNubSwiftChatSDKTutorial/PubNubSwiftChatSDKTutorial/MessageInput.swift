@@ -16,7 +16,7 @@ struct MessageInput: View {
         VStack (alignment: .center) {
             //Color.purple.ignoresSafeArea()
             Divider().tint(Navy200)
-            TypingIndicator()
+            TypingIndicatorView()
             TextField(
                 "Type Message",
                 text: $messageText

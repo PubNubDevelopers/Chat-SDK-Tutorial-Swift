@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Message: View {
+struct MessageView: View {
     var received: Bool
     var isRead: Bool
     var presenceIndicator: Bool = false
@@ -35,8 +35,8 @@ struct Message: View {
                                 Text(messageText).font(.body).frame(maxWidth: UIScreen.main.bounds.size.width - 90, alignment: .leading).padding(5)
                                 //  Area for Emoji
                                 HStack (alignment: .top) {
-                                    MessageReaction(emoji: "😀", count: 0)
-                                    MessageReaction(emoji: "🥶", count: 5)
+                                    MessageReactionView(emoji: "😀", count: 0)
+                                    MessageReactionView(emoji: "🥶", count: 5)
                                 }.frame(maxWidth: .infinity, alignment: .trailing)
                                 Spacer()
                             }.padding([.vertical], 5).padding([.horizontal], 8)
@@ -72,8 +72,8 @@ struct Message: View {
                                 Text(messageText).font(.body).fixedSize(horizontal: false, vertical: true).frame(alignment: .leading).padding(5)
                                 //  Area for Emoji
                                 HStack (alignment: .top, spacing: 2) {
-                                    MessageReaction(emoji: "😀", count: 0)
-                                    MessageReaction(emoji: "🥶", count: 5)
+                                    MessageReactionView(emoji: "😀", count: 0)
+                                    MessageReactionView(emoji: "🥶", count: 5)
                                     MessageReadReceipt(isRead: isRead).padding(4)
                                 }.frame(maxWidth: .infinity, alignment: .trailing)
 
@@ -104,23 +104,23 @@ struct Message: View {
         ScrollView
         {
             
-            Message(received: true, isRead: true, presenceIndicator: true, messageText: "I am some message text")
+            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "I am some message text")
 
-            Message(received: false, isRead: true, presenceIndicator: false, messageText: "I am some message text")
+            MessageView(received: false, isRead: true, presenceIndicator: false, messageText: "I am some message text")
             
-            Message(received: true, isRead: false, presenceIndicator: false, messageText: "I am some message text")
+            MessageView(received: true, isRead: false, presenceIndicator: false, messageText: "I am some message text")
 
-            Message(received: false, isRead: false, presenceIndicator: false, messageText: "I am some message text")
+            MessageView(received: false, isRead: false, presenceIndicator: false, messageText: "I am some message text")
             
-            Message(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
+            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
 
-            Message(received: true, isRead: true, presenceIndicator: false, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
+            MessageView(received: true, isRead: true, presenceIndicator: false, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
             
-            Message(received: false, isRead: true, presenceIndicator: true, messageText: "yo")
+            MessageView(received: false, isRead: true, presenceIndicator: true, messageText: "yo")
             
-            Message(received: false, isRead: true, presenceIndicator: true, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
+            MessageView(received: false, isRead: true, presenceIndicator: true, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
 
-            Message(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
+            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
 
         }
 

@@ -34,7 +34,7 @@ struct AvatarView : View {
                     .strokeBorder(Color.white,lineWidth: 1)
                     .background(Circle().foregroundColor(presenceColor))
                     .frame(width: size/4, height: size/4)
-                    .offset(x: -size/10, y: -size/10)
+                    .offset(x: -size/50, y: -size/50)
                 //.shadow(radius: 10)
             }
         }
@@ -53,5 +53,8 @@ struct AvatarView : View {
         AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 100)
 
         AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 50)
+        
+        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/m/63.jpg")!, presenceColor: Neutral300, size: 200)
+
     }
 }

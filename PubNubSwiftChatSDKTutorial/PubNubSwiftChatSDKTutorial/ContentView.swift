@@ -1,16 +1,19 @@
 //
 //  ContentView.swift
-//  PubNubSwiftChatSDK
+//  PubNubSwiftChatSDKTutorial
 //
-//  Created by Darryn Campbell on 03/09/2024.
+//  Created by Darryn Campbell on 25/09/2024.
 //
 
 import SwiftUI
+import PubNubSDK
+import PubNubSwiftChatSDK
 
 struct ContentView: View {
     var myvar: Bool = false
     @State var loginScreenVisible: Bool = true
     @State var userId = ""
+    @State var userName = ""
     var body: some View {
         if (loginScreenVisible)
         {
@@ -18,7 +21,7 @@ struct ContentView: View {
         }
         else
         {
-            HomeScreen(logout: {self.logout()})
+            HomeScreen(logout: {self.logout()}, userId: userId, username: userName, chat: nil)
         }
 
         
@@ -26,7 +29,8 @@ struct ContentView: View {
     func login(username: String) {
         if (!username.isEmpty)
         {
-            let userId = convertToId(username: username)
+            userName = username
+            userId = convertToId(username: username)
             print("Logging in " + userId)
             loginScreenVisible = false
         }
