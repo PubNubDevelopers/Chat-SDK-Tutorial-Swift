@@ -34,7 +34,7 @@ struct HomeScreen: View {
         else
         {
             //  Chat Screen
-            ChatScreen(activeChannel: activeChannel, channelChanged: self.channelChanged)
+            ChatScreen(chat: chat, currentUserId: chat?.currentUser.id ?? "", activeChannel: activeChannel, channelChanged: self.channelChanged)
         }
     }
     

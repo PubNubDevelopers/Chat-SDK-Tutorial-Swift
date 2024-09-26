@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct TypingIndicatorView: View {
+    var typingMessage: String
     var body: some View {
-        Text("Typing: User1, User2").font(.callout).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+        HStack () {
+            AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceShown: false, size: 30)
+            Text(typingMessage).font(.callout).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+        }.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 10))
     }
 }
 
 #Preview {
-    TypingIndicatorView()
+    TypingIndicatorView(typingMessage: "Somebody typing")
 }
 

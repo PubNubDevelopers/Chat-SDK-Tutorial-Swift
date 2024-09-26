@@ -7,6 +7,7 @@
 
 struct TestData {
     static let AvatarBaseUrl = "https://chat-sdk-demo-web.netlify.app"
+    static let DefaultProfile = "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png"
     static let TestAvatars = [
         "/avatars/avatar01.png",
         "/avatars/avatar02.png",

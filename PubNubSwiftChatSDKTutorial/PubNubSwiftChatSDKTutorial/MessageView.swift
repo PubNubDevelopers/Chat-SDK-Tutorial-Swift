@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import PubNubSDK
+import PubNubSwiftChatSDK
 
 struct MessageView: View {
+    var chat: ChatImpl?
     var received: Bool
-    var isRead: Bool
+    var isPublicChannel: Bool
+    var message: MessageImpl?
+    var readReceipts: [Timetoken: [String]]
+    @State var isRead: Bool = false
     var presenceIndicator: Bool = false
-    var username: String = "Default Username"
+    @State var senderName: String = "Default Username"
+    @State var avatarUrl: String = TestData.DefaultProfile
     var messageText: String
     
     var body: some View {
-        
         
         if (received)
         {
@@ -24,9 +30,9 @@ struct MessageView: View {
             HStack()
             {
                 HStack(alignment: VerticalAlignment.top){
-                    AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: getPresenceColor(presenceIndicator: presenceIndicator), size: 40)
+                    AvatarView(url: URL(string: avatarUrl)!, presenceColor: getPresenceColor(presenceIndicator: presenceIndicator), size: 40)
                     VStack(alignment: .leading) {
-                        Text(username).font(.callout)
+                        Text(senderName).font(.callout)
                         ZStack (alignment: .leading){
                             Neutral50
                             VStack (alignment: .leading)
@@ -35,8 +41,8 @@ struct MessageView: View {
                                 Text(messageText).font(.body).frame(maxWidth: UIScreen.main.bounds.size.width - 90, alignment: .leading).padding(5)
                                 //  Area for Emoji
                                 HStack (alignment: .top) {
-                                    MessageReactionView(emoji: "😀", count: 0)
-                                    MessageReactionView(emoji: "🥶", count: 5)
+                                    MessageReactionView(message: message, emoji: "😀")
+                                    MessageReactionView(message: message, emoji: "🥶")
                                 }.frame(maxWidth: .infinity, alignment: .trailing)
                                 Spacer()
                             }.padding([.vertical], 5).padding([.horizontal], 8)
@@ -50,7 +56,9 @@ struct MessageView: View {
                         
                     }
                 }.fixedSize().frame(alignment: .leading).padding(.horizontal)
-            }.frame(maxWidth: .infinity, alignment: .leading)
+            }.frame(maxWidth: .infinity, alignment: .leading).onAppear {
+                self.launch(chat: chat)
+            }
 
         }
         else
@@ -72,9 +80,27 @@ struct MessageView: View {
                                 Text(messageText).font(.body).fixedSize(horizontal: false, vertical: true).frame(alignment: .leading).padding(5)
                                 //  Area for Emoji
                                 HStack (alignment: .top, spacing: 2) {
-                                    MessageReactionView(emoji: "😀", count: 0)
-                                    MessageReactionView(emoji: "🥶", count: 5)
-                                    MessageReadReceipt(isRead: isRead).padding(4)
+                                    MessageReactionView(message: message, emoji: "😀")
+                                    MessageReactionView(message: message, emoji: "🥶")
+                                    if (!isPublicChannel)
+                                    {
+                                        if (processReadReceipts(readReceipts: readReceipts))
+                                        {
+                                            MessageReadReceipt(isRead: true).padding(4)
+                                        }
+                                        else
+                                        {
+                                            MessageReadReceipt(isRead: false).padding(4)
+                                        }
+                                        //if (!readReceipts.isEmpty)
+                                        //{
+                                            //debugPrint("Darryn read receipt update")
+                                            //MessageReadReceipt(isRead: true).padding(4)
+                                            //debugPrint(receipt)
+                                        //}
+                                        
+                                        
+                                    }
                                 }.frame(maxWidth: .infinity, alignment: .trailing)
 
                             }.padding([.vertical], 8).padding([.horizontal], 8)
@@ -86,8 +112,37 @@ struct MessageView: View {
                         
                     }.padding([.leading], 100)
                 }.frame(alignment: .leading).padding(.horizontal)
-            }.frame(maxWidth: .infinity, alignment: .trailing).padding(.vertical)
+            }.frame(maxWidth: .infinity, alignment: .trailing).padding(.vertical).onAppear {
+                self.launch(chat: chat)
+            }
         }
+    }
+    func launch(chat: ChatImpl?) {
+        chat?.getUser(
+            userId: message?.userId ?? "unknown"
+        ) {
+          switch $0 {
+          case let .success(user):
+            if let user = user {
+              debugPrint("Fetched user metadata with ID: \(user.id)")
+                senderName = user.name ?? "Unknown User"
+                avatarUrl = user.profileUrl ?? TestData.DefaultProfile
+            } else {
+              debugPrint("User not found")
+            }
+          case let .failure(error):
+            debugPrint("Failed to fetch user metadata: \(error)")
+          }
+        }
+        //  Work out if the message is read
+        //if (!isPublicChannel)
+        //{
+        //    debugPrint("Launch for MessageView")
+        //    readReceipts.forEach {receipt in
+        //        debugPrint("Darryn")
+        //        debugPrint(receipt)
+        //    }
+        //}
     }
     func getPresenceColor(presenceIndicator: Bool) -> Color
     {
@@ -97,31 +152,36 @@ struct MessageView: View {
         }
         return presenceColor
     }
+    
+    func processReadReceipts(readReceipts: [Timetoken: [String]]) -> Bool
+    {
+        debugPrint(readReceipts)
+        var isRead = false
+        readReceipts.forEach {(messageTimetoken, users) in
+            print("Message Timetoken: \(messageTimetoken) was read by users: \(users)")
+            if (messageTimetoken >= message!.timetoken) {
+                if ((!users.isEmpty && !users.contains((chat?.currentUser.id)!)) || users.count > 1) {
+                    isRead = true
+                }
+            }
+        }
+        return isRead
+    }
 }
 
 #Preview {
     VStack {
         ScrollView
         {
-            
-            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "I am some message text")
-
-            MessageView(received: false, isRead: true, presenceIndicator: false, messageText: "I am some message text")
-            
-            MessageView(received: true, isRead: false, presenceIndicator: false, messageText: "I am some message text")
-
-            MessageView(received: false, isRead: false, presenceIndicator: false, messageText: "I am some message text")
-            
-            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
-
-            MessageView(received: true, isRead: true, presenceIndicator: false, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
-            
-            MessageView(received: false, isRead: true, presenceIndicator: true, messageText: "yo")
-            
-            MessageView(received: false, isRead: true, presenceIndicator: true, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
-
-            MessageView(received: true, isRead: true, presenceIndicator: true, messageText: "yo")
-
+            //MessageView(received: true, isPublicChannel: false, isRead: true, presenceIndicator: true, messageText: "I am some message text")
+            //MessageView(received: false, isPublicChannel: false,isRead: true, presenceIndicator: false, messageText: "I am some message text")
+            //MessageView(received: true, isPublicChannel: false,isRead: false, presenceIndicator: false, messageText: "I am some message text")
+            //MessageView(received: false, isPublicChannel: false,isRead: false, presenceIndicator: false, messageText: "I am some message text")
+            //MessageView(received: true, isPublicChannel: false,isRead: true, presenceIndicator: true, messageText: "yo")
+            //MessageView(received: true, isPublicChannel: false,isRead: true, presenceIndicator: false, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
+            //MessageView(received: false, isPublicChannel: false,isRead: true, presenceIndicator: true, messageText: "yo")
+            //MessageView(received: false, isPublicChannel: false,isRead: true, presenceIndicator: true, messageText: "Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very Very very very very very very long message")
+            //MessageView(received: true, isPublicChannel: false,isRead: true, presenceIndicator: true, messageText: "yo")
         }
 
     }

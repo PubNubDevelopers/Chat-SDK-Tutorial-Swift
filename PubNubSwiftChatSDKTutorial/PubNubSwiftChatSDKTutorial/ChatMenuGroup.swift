@@ -30,7 +30,7 @@ struct ChatMenuGroup: View {
             {
                 ForEach(users!, id: \.self.id) {user in
                     if (user.id != chat?.currentUser.id && user.id != "PUBNUB_INTERNAL_MODERATOR") {
-                        ChatMenuItem(avatarUrl: URL(string: user.profileUrl ?? "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, chatTitle: user.name ?? "Unknown Channel", userSelected: userSelected, channelSelected: channelSelected, stateChannel: nil, stateUser: user)
+                        ChatMenuItem(avatarUrl: URL(string: user.profileUrl ?? TestData.DefaultProfile)!, chatTitle: user.name ?? "Unknown Channel", userSelected: userSelected, channelSelected: channelSelected, stateChannel: nil, stateUser: user)
                     }
                 }
             }

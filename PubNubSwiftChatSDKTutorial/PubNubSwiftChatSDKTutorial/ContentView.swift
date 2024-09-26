@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         if (loginScreenVisible)
         {
-            LoginScreen(username: "Darryn 1", loginFunction: {username in self.login(username: username)})
+            LoginScreen(username: "Darryn 2", loginFunction: {username in self.login(username: username)})
         }
         else
         {

@@ -44,15 +44,15 @@ struct AvatarView : View {
 
 #Preview {
     VStack {
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceShown: false, size: 100)
+        AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceShown: false, size: 100)
 
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: StatusIndicatorSuccess, size: 100)
+        AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceColor: StatusIndicatorSuccess, size: 100)
 
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: StatusIndicatorSuccess, size: 50)
+        AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceColor: StatusIndicatorSuccess, size: 50)
         
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 100)
+        AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceColor: Neutral300, size: 100)
 
-        AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")!, presenceColor: Neutral300, size: 50)
+        AvatarView(url: URL(string: TestData.DefaultProfile)!, presenceColor: Neutral300, size: 50)
         
         AvatarView(url: URL(string: "https://chat-sdk-demo-web.netlify.app/avatars/m/63.jpg")!, presenceColor: Neutral300, size: 200)
 

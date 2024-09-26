@@ -12,6 +12,7 @@ struct HeaderView : View {
     var backFunction: () -> Void = {}
     var title: String = ""
     var avatarUrl: String = ""
+    var presenceShown: Bool = true
     var body: some View {
         HStack() {
             if (!chatLayout)
@@ -44,7 +45,7 @@ struct HeaderView : View {
                         .resizable().scaledToFit()
                         .frame(width: 35, height: 35).padding()
                 }
-                AvatarView(url: URL(string: avatarUrl)!, presenceColor: StatusIndicatorSuccess, size: 40)
+                AvatarView(url: URL(string: avatarUrl)!, presenceShown: presenceShown, presenceColor: StatusIndicatorSuccess, size: 40)
                 Text(title).font(.headline).foregroundStyle(.white).padding()
             }
 
@@ -57,7 +58,7 @@ struct HeaderView : View {
     VStack {
         HeaderView(chatLayout: false)
 
-        HeaderView(chatLayout: true, backFunction: {}, title: "Sarah Johannsen", avatarUrl: "https://chat-sdk-demo-web.netlify.app/avatars/placeholder2.png")
+        HeaderView(chatLayout: true, backFunction: {}, title: "Sarah Johannsen", avatarUrl: TestData.DefaultProfile)
 
     }
 }
