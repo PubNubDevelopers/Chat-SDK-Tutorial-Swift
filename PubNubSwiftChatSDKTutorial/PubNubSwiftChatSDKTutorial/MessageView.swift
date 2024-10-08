@@ -26,19 +26,17 @@ struct MessageView: View {
         if (received)
         {
             //  Received Message
-            //Text(messageText).font(.callout).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
             HStack()
             {
                 HStack(alignment: VerticalAlignment.top){
                     AvatarView(url: URL(string: avatarUrl)!, presenceColor: getPresenceColor(presenceIndicator: presenceIndicator), size: 40)
                     VStack(alignment: .leading) {
-                        Text(senderName).font(.callout)
+                        Text(senderName).font(.callout).padding(.top)
                         ZStack (alignment: .leading){
                             Neutral50
                             VStack (alignment: .leading)
                             {
-
-                                Text(messageText).font(.body).frame(maxWidth: UIScreen.main.bounds.size.width - 90, alignment: .leading).padding(5)
+                                Text(messageText).font(.body).fixedSize(horizontal: false, vertical: true).padding(5)
                                 //  Area for Emoji
                                 HStack (alignment: .top) {
                                     MessageReactionView(message: message, emoji: "😀")
@@ -54,18 +52,15 @@ struct MessageView: View {
                             topTrailingRadius: 20))
                         Spacer()
                         
-                    }
-                }.fixedSize().frame(alignment: .leading).padding(.horizontal)
+                    }.frame(maxWidth: UIScreen.main.bounds.size.width - 90)
+                }.fixedSize().frame(alignment: .leading).padding()
             }.frame(maxWidth: .infinity, alignment: .leading).onAppear {
                 self.launch(chat: chat)
             }
-
         }
         else
         {
             //  Sent message
-            //Text(messageText).font(.callout).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
-            
             HStack()
             {
                 HStack(alignment: VerticalAlignment.top){
@@ -92,14 +87,6 @@ struct MessageView: View {
                                         {
                                             MessageReadReceipt(isRead: false).padding(4)
                                         }
-                                        //if (!readReceipts.isEmpty)
-                                        //{
-                                            //debugPrint("Darryn read receipt update")
-                                            //MessageReadReceipt(isRead: true).padding(4)
-                                            //debugPrint(receipt)
-                                        //}
-                                        
-                                        
                                     }
                                 }.frame(maxWidth: .infinity, alignment: .trailing)
 
@@ -134,15 +121,6 @@ struct MessageView: View {
             debugPrint("Failed to fetch user metadata: \(error)")
           }
         }
-        //  Work out if the message is read
-        //if (!isPublicChannel)
-        //{
-        //    debugPrint("Launch for MessageView")
-        //    readReceipts.forEach {receipt in
-        //        debugPrint("Darryn")
-        //        debugPrint(receipt)
-        //    }
-        //}
     }
     func getPresenceColor(presenceIndicator: Bool) -> Color
     {

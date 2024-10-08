@@ -17,21 +17,19 @@ struct ContentView: View {
     var body: some View {
         if (loginScreenVisible)
         {
-            LoginScreen(username: "Darryn 2", loginFunction: {username in self.login(username: username)})
+            LoginScreen(username: "", loginFunction: {username in self.login(username: username)})
         }
         else
         {
             HomeScreen(logout: {self.logout()}, userId: userId, username: userName, chat: nil)
         }
-
-        
     }
     func login(username: String) {
         if (!username.isEmpty)
         {
             userName = username
             userId = convertToId(username: username)
-            print("Logging in " + userId)
+            debugPrint("Logging in " + userId)
             loginScreenVisible = false
         }
     }

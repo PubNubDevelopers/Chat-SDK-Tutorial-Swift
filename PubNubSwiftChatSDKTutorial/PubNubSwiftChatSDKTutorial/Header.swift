@@ -29,7 +29,7 @@ struct HeaderView : View {
                 Text("PubNub").font(.headline).foregroundStyle(.white).padding()
                 Spacer()
                 Button {
-                    print("Not Implemented")
+                    debugPrint("Not Implemented")
                 } label: {
                     Image("notifications_none")
                         .resizable().scaledToFit()

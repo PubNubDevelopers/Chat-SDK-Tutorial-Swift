@@ -19,7 +19,6 @@ struct MessageInput: View {
     @State var typingMessage: String = ""
     var body: some View {
         VStack (alignment: .center) {
-            //Color.purple.ignoresSafeArea()
             if (somebodyIsTyping)
             {
                 Divider().tint(Navy200)
@@ -40,7 +39,7 @@ struct MessageInput: View {
                 }
             }
             .font(.body)
-            padding()
+            .padding()
             .textInputAutocapitalization(.never)
             .disableAutocorrection(true)
             .border(.secondary).padding()
@@ -51,18 +50,20 @@ struct MessageInput: View {
     
     func launch()
     {
-        typingCloseable = activeChannel?.getTyping {
-            typingUsers in
-            debugPrint("Typing users: \(typingUsers)")
-            if (typingUsers.isEmpty)
-            {
-                somebodyIsTyping = false
-                typingMessage = ""
-            }
-            else
-            {
-                somebodyIsTyping = true
-                typingMessage = "Typing: " + typingUsers.joined(separator: ", ")
+        if (activeChannel?.type != .public) {
+            typingCloseable = activeChannel?.getTyping {
+                typingUsers in
+                debugPrint("Typing users: \(typingUsers)")
+                if (typingUsers.isEmpty)
+                {
+                    somebodyIsTyping = false
+                    typingMessage = ""
+                }
+                else
+                {
+                    somebodyIsTyping = true
+                    typingMessage = "Typing: " + typingUsers.joined(separator: ", ")
+                }
             }
         }
     }

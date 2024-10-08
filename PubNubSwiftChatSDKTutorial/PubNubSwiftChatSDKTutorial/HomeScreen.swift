@@ -13,6 +13,7 @@ struct HomeScreen: View {
     var logout: () -> Void
     var userId: String
     var username: String
+    @State var showProgress: Bool = false
     @State var chat: ChatImpl? = nil
     @State var activeChannel: ChannelImpl? = nil
     @State var publicChannels = [ChannelImpl]()
@@ -23,6 +24,10 @@ struct HomeScreen: View {
             //  Home screen (choose a chat)
             VStack{
                 HeaderView(chatLayout: false)
+                if (showProgress)
+                {
+                    ProgressView()
+                }
                 ScrollView {
                     ChatMenuGroup(chat: chat, groupName: "PUBLIC CHANNELS", channels: publicChannels, users: nil, userSelected: self.userSelected, channelSelected: self.channelSelected)
                     ChatMenuGroup(chat: chat, groupName: "DIRECT MESSAGES", channels: nil, users: allUsers, userSelected: self.userSelected, channelSelected: self.channelSelected)
@@ -41,8 +46,6 @@ struct HomeScreen: View {
     func launch() {
         if (userId.isEmpty) {return}
         if (!publicChannels.isEmpty) {return}
-        print("Launching " + userId)
-
         
         //  Initialize PubNub Chat
         let pubNubConfiguration = PubNubConfiguration(
@@ -53,10 +56,9 @@ struct HomeScreen: View {
         )
         // Create Chat configuration
         let chatConfiguration = ChatConfiguration(
-            // Fill in the necessary parameters for ChatConfiguration
+            // Optional: fill in the other parameters for ChatConfiguration
         )
 
-        // Create ChatImpl instance
         chat = ChatImpl(
             chatConfiguration: chatConfiguration,
             pubNubConfiguration: pubNubConfiguration
@@ -77,13 +79,13 @@ struct HomeScreen: View {
 
     }
     func userSelected(selectedUser: UserImpl) {
-        //  todo show loading spinner
-        print("User Selected")
+        showProgress = true
         chat?.createDirectConversation(invitedUser: selectedUser) {
             switch $0 {
             case let .success(conversationResult):
                 let channel = conversationResult.channel
                 activeChannel = channel
+                showProgress = false
             case let .failure(error):
                 debugPrint("Failed to create direct conversation: \(error)")
             }
@@ -91,7 +93,7 @@ struct HomeScreen: View {
         
     }
     func channelSelected(channel: ChannelImpl) {
-        print("Channel Selected")
+        print("Channel Selected: " + channel.id)
         activeChannel = channel
     }
     func channelChanged(_ newChannel: ChannelImpl?) {
@@ -103,12 +105,11 @@ struct HomeScreen: View {
             let randomProfileUrl =
             TestData.AvatarBaseUrl + TestData.TestAvatars[Int.random(in: 0..<TestData.TestAvatars.endIndex)]
             chat?.currentUser.update(name: username, profileUrl: randomProfileUrl)
-            
         }
         else {
-            print("Chat Profile was not empty")
+            debugPrint("Chat Profile was not empty")
         }
-        //  todo there's something wrong here, the order returned isn't consistent
+        //  todo check with dev engineer about sort order
         let channelOrder : PubNub.ObjectSortField = .init(property: .id, ascending: true)
         chat?.getChannels(filter: "id LIKE \"public*\"", sort: [channelOrder]) {
             switch $0 {
@@ -125,7 +126,7 @@ struct HomeScreen: View {
                         channelCustom: customObjectGeneral
                     ) {
                         switch $0 {
-                        case let .success(_):
+                        case .success(_):
                             let customObjectWork = ["profileUrl":  TestData.AvatarBaseUrl + "/group/globe2.png"]
                             chat?.createPublicConversation(
                                 channelId: "public-work",

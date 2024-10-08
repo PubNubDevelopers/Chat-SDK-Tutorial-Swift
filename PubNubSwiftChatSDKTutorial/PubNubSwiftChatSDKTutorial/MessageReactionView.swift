@@ -12,7 +12,6 @@ import PubNubSwiftChatSDK
 struct MessageReactionView : View {
     let message: MessageImpl?
     let emoji: String
-    //let count: Int
     @State var countText: String = ""
     var body: some View {
         HStack(spacing: 0) {

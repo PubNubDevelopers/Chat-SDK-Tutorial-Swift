@@ -26,10 +26,8 @@ struct NavIcon : View {
             .onTapGesture {
                 clickAction()
             }.frame(maxWidth: 55, maxHeight: 64).padding([.vertical], 5 ).padding([.horizontal]).background(Navy50)
-    
     }
 }
-
 
 #Preview {
     VStack {
