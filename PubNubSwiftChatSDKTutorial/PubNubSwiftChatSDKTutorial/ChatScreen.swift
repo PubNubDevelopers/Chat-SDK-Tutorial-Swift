@@ -32,6 +32,8 @@ struct ChatScreen : View {
                 }
             }.onAppear {
                 self.launch()
+            }.onDisappear {
+                self.disappear()
             }.onChange(of: messages.count) {
                 _ in
                 scrollView.scrollTo(messages.last?.timetoken)
@@ -114,8 +116,10 @@ struct ChatScreen : View {
                     myChannelMembership?.setLastReadMessage(message: message)
                     if (!messages.isEmpty)
                     {
+                        newMessageUpdateStream?.close()
                         newMessageUpdateStream = MessageImpl.streamUpdatesOn(messages: messages) { updatedMessages in
-                            debugPrint("Received updates for messages")
+                            debugPrint("Received updates for new messages")
+                            //  In production, it is more efficient to only update the changed message
                             messages = updatedMessages
                         }
                     }
@@ -133,8 +137,10 @@ struct ChatScreen : View {
                         }
                         if (!messages.isEmpty)
                         {
+                            historicalMessageUpdateStream?.close()
                             historicalMessageUpdateStream = MessageImpl.streamUpdatesOn(messages: messages) { updatedMessages in
-                                debugPrint("Received updates for messages")
+                                debugPrint("Received updates for historical messages")
+                                //  In production, it is more efficient to only update the changed message
                                 messages = updatedMessages
                             }
                         }
@@ -149,9 +155,14 @@ struct ChatScreen : View {
                 debugPrint("Failed to fetch memberships: \(error)")
             }
         }
-        
+    }
 
-
+    func disappear()
+    {
+        readReceiptsStream?.close()
+        newMessageUpdateStream?.close()
+        historicalMessageUpdateStream?.close()
+        autoCloseable?.close()
     }
 }
 
