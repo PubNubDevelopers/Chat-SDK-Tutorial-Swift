@@ -576,7 +576,7 @@
 			repositoryURL = "https://github.com/pubnub/swift-chat-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = "0.8.0-dev";
+				version = "0.8.1-dev";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

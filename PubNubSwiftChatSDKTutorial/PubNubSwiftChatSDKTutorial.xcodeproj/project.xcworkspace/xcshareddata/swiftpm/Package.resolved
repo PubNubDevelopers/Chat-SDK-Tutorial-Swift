@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pubnub/kmp-chat",
       "state" : {
-        "revision" : "910c9bd122ec408c577b78e96aff106c459926b9",
-        "version" : "0.8.0-dev"
+        "revision" : "a2a433d17ca2364b3381a7ff3cd2223c88f6206e",
+        "version" : "0.8.1-dev"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pubnub/swift-chat-sdk",
       "state" : {
-        "revision" : "d9d5de55cb78376ed22f3a12cb03a266d38f4816",
-        "version" : "0.8.0-dev"
+        "revision" : "2deda1b4fa53d31fa54b307929a8752923c952b3",
+        "version" : "0.8.1-dev"
       }
     }
   ],
