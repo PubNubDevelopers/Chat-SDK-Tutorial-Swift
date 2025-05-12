@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AF252332CA434DB00212322 /* PubNubSwiftChatSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF252322CA434DB00212322 /* PubNubSwiftChatSDK */; };
+		2A263A272DB0FC6D009A0DB4 /* PubNubSwiftChatSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2A263A262DB0FC6D009A0DB4 /* PubNubSwiftChatSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AF252332CA434DB00212322 /* PubNubSwiftChatSDK in Frameworks */,
+				2A263A272DB0FC6D009A0DB4 /* PubNubSwiftChatSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 			);
 			name = PubNubSwiftChatSDKTutorial;
 			packageProductDependencies = (
-				2AF252322CA434DB00212322 /* PubNubSwiftChatSDK */,
+				2A263A262DB0FC6D009A0DB4 /* PubNubSwiftChatSDK */,
 			);
 			productName = PubNubSwiftChatSDKTutorial;
 			productReference = 2AF252002CA417BD00212322 /* PubNubSwiftChatSDKTutorial.app */;
@@ -210,7 +210,7 @@
 			mainGroup = 2AF251F72CA417BD00212322;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				2AF252312CA434C500212322 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */,
+				2A263A252DB0FC6D009A0DB4 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2AF252012CA417BD00212322 /* Products */;
@@ -571,20 +571,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2AF252312CA434C500212322 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */ = {
+		2A263A252DB0FC6D009A0DB4 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pubnub/swift-chat-sdk";
 			requirement = {
-				kind = exactVersion;
-				version = "0.8.1-dev";
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.20.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2AF252322CA434DB00212322 /* PubNubSwiftChatSDK */ = {
+		2A263A262DB0FC6D009A0DB4 /* PubNubSwiftChatSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2AF252312CA434C500212322 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */;
+			package = 2A263A252DB0FC6D009A0DB4 /* XCRemoteSwiftPackageReference "swift-chat-sdk" */;
 			productName = PubNubSwiftChatSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
